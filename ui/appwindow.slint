@@ -1,0 +1,62 @@
+import { Button, VerticalBox, TextEdit, HorizontalBox } from "std-widgets.slint";
+
+export struct NoteData {
+    note_content: string,
+
+}
+
+
+component Container inherits Rectangle {
+
+
+    width: 35px;
+    height: 35px;
+
+    Image {
+        source: @image-url("icons/notes.png");
+        width: parent.width;
+        height: parent.height;
+    }
+
+    TouchArea {
+        
+    }
+    
+}
+
+component Sidebar inherits Rectangle {
+
+    height: 500px;
+    width: 50px;
+    background: lightcoral;
+
+    VerticalLayout {
+        
+        HorizontalBox {
+            alignment: center;
+            Container {}
+        }
+        
+    }
+    
+}
+
+export component AppWindow inherits Window {
+    in-out property <string> note_content;
+
+    width: 500px;
+    height: 500px;
+    
+
+    HorizontalLayout {
+
+        Sidebar {}
+
+        TextEdit {
+
+            font-size: 12px;
+            text: note_content;
+        }
+
+    }
+}
